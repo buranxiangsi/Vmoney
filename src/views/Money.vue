@@ -54,6 +54,32 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~@/assets/style/helper.scss";
+.tags{
+  font-size: 14px;
+  >.current{
+    display: flex;
+    >li{
+      background: #d9d9d9;
+      $h: 24px;
+      height: $h;
+      border-radius: $h/2;
+      padding: 0 16px;
+      margin-right: 12px;
+      line-height: $h;//一行字才能用，垂直居中
+    }
 
+  }
+  > .new{
+    padding: 16px;
+    button{
+      background: transparent;
+      border: none;
+      color: #999;
+      border-bottom: 1px solid;
+      padding: 0 4px;
+    }
+  }
+}
 
 </style>

@@ -9,27 +9,49 @@
     </div>
 </template>
 
-<script lang="js">
-export default{
-  name: "Types",
-  props:['xxx'],
-  data(){
-    return {
-      type: '-'
-    }
-  },
-  mounted(){
-    console.log(this.xxx)
-  },
-  methods:{
-    selectType(type){
-      if(type !== '-' && type!=='+'){
-        throw new Error('type is unknown')
-      }
-      this.type = type
-    }
+<script lang="ts">
+import Vue from 'vue';
+import { Component } from 'vue-property-decorator';
+//引入装饰器
+@Component({
+  props:{
+    propMessage: String
   }
+})
+export default class Types extends Vue{
+  type = '-'
+  helloMsg = 'Hello,' + this.propMessage
+  selectType(type: string){//typescript
+    if(type !== '-' && type!=='+'){
+      throw new Error('type is unknown')
+    }
+    this.type = type
+  }
+  
 }
+
+
+
+// export default{
+//   name: "Types",
+//   props:['xxx'],
+//   data(){
+//     return {
+//       type: '-'
+//     }
+//   },
+//   mounted(){
+//     console.log(this.xxx)
+//   },
+//   methods:{
+//     selectType(type){
+//       if(type !== '-' && type!=='+'){
+//         throw new Error('type is unknown')
+//       }
+//       this.type = type
+//     }
+//   }
+// }
 </script>
 
 <style lang="scss" scoped>

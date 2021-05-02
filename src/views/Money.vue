@@ -1,6 +1,6 @@
 <template>
  
-    <Layout>
+    <Layout class="">
       <div class="tags">
         <ul class="current">
           <li>衣</li>

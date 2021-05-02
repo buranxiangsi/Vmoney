@@ -1,6 +1,6 @@
 <template>
  
-    <Layout class="">
+    <Layout class-prefix="xxx">
       <div class="tags">
         <ul class="current">
           <li>衣</li>
@@ -52,7 +52,11 @@ export default {
   name: 'Money'
 }
 </script>
-
+<style lang="scss">
+.xxx-content{
+  border: 4px solid red;
+}
+</style>
 <style lang="scss" scoped>
 @import "~@/assets/style/helper.scss";
 .numberPad{

@@ -13,9 +13,9 @@
         </div>
       </div>
       <div >
-        <label class="note">
+        <label class="notes">
           <span>备注</span>
-          <input type="text">
+          <input type="text" placeholder="请输入备注">
         </label>
       </div>
       <div>
@@ -55,6 +55,24 @@ export default {
 
 <style lang="scss" scoped>
 @import "~@/assets/style/helper.scss";
+.notes{
+  font-size: 14px;
+  background: #f5f5f5;
+  padding-left: 16px;
+  display: flex;
+  align-items: center;
+  .name{
+    padding-right: 16px;
+  }
+  input{
+    height: 64px;
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    padding-left: 16px;
+
+  }
+}
 .tags{
   font-size: 14px;
   >.current{

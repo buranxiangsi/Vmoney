@@ -8,32 +8,25 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { Component, Prop } from "vue-property-decorator";
+import Vue from 'vue';
+import { Component, Prop } from 'vue-property-decorator';
 //引入装饰器
 @Component
 export default class Types extends Vue {
-  type = "-";
+  type = '-';
   @Prop(Number) xxx: number | undefined;
-  //Prop 告诉vue xxx 不是data而是prop
-  //number 告诉vue xxx 运行时是个number
-  //xxx是属性名
-  //number | undefiend 告诉TSxxx的编译时类型
-
   selectType(type: string) {
     //typescript
-    if (type !== "-" && type !== "+") {
-      throw new Error("type is unknown");
+    if (type !== '-' && type !== '+') {
+      throw new Error('type is unknown');
     }
     this.type = type;
   }
 }
 </script>
 
-
-
 <style lang="scss" scoped>
-@import "~@/assets/style/helper.scss";
+@import '~@/assets/style/helper.scss';
 .types {
   background: #c4c4c4;
   display: flex;
@@ -47,7 +40,7 @@ export default class Types extends Vue {
     align-items: center;
     position: relative;
     &.selected::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;

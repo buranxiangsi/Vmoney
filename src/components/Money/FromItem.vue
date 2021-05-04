@@ -3,7 +3,7 @@
       <label class="fromItem">
         <span>{{this.fieldName}}</span>
         <input type="text" 
-            v:value="value"
+            :value="value"
             @input="onValueChanged($event.target.value)"
             :placeholder="this.placeholder" />
       </label>

@@ -32,7 +32,7 @@ const routes: Array<RouteConfig> = [
     component: NoFound
   },
   {
-    path:'/labels/edit',
+    path:'/labels/edit/:id',
     component: EditLabel
   }
 ];

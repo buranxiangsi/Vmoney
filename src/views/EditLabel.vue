@@ -4,17 +4,20 @@
     <Icon name="left" />
     <span>编辑标签</span>
   </div>
-  <Notes fieldName="标签名" placeholder="请输入标签名" />
+  <FromItem fieldName="标签名" placeholder="请输入标签名" />
+  <Button>删除标签</Button>
 </Layout>
 </template>
 <script lang="ts">
 import Vue from "vue";
 import { Component } from "vue-property-decorator";
 import { tagListModel } from "../models/tagListModel";
-import Notes from "@/components/Money/Notes.vue"
+import FromItem from "@/components/Money/FromItem.vue"
+import Button from "@/components/Button.vue"
+
 
 @Component({
-  components: {Notes}
+  components: { Button,FromItem}
 })
 export default class EditLabel extends Vue {
   create(){

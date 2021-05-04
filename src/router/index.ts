@@ -4,6 +4,8 @@ import VueRouter, { RouteConfig } from 'vue-router';
 import  Labels  from "@/views/Labels.vue";
 import Statistics from "@/views/Statistics.vue"
 import NoFound from "@/views/NoFound.vue"
+import EditLabel  from "@/views/EditLabel.vue"
+
 
 Vue.use(VueRouter);
 
@@ -28,6 +30,10 @@ const routes: Array<RouteConfig> = [
   {
     path: '*',
     component: NoFound
+  },
+  {
+    path:'/labels/edit',
+    component: EditLabel
   }
 ];
 

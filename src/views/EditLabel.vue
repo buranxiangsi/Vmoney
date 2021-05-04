@@ -1,0 +1,12 @@
+<template>
+  <div>编辑标签</div>
+</template>
+<script>
+export default {
+  name: 'EditLabel'
+}
+ 
+</script>
+<style lang="scss" scoped>
+     
+</style>

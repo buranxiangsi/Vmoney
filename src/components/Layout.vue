@@ -1,6 +1,6 @@
 <template>
 
-    <div class="layout-wrapper">
+    <div class="layout-wrapper" >
       <div class="content" :class="classPrefix && `${classPrefix}-content`  ">
         <slot />
       </div>

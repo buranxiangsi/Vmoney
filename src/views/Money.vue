@@ -2,7 +2,14 @@
   <Layout class-prefix="layout">
     
     <NumberPad :value.sync="record.amount" @submit="saveRecord" />
-   
+   <div class="createdAt">
+      <FromItem
+        field-name="日期"
+        type="date"
+        placeholder="在这里输入日期"
+        :value.sync="record.createdAt"
+      />
+      </div>
     <div class="notes">
       <FromItem
         field-name="备注"
@@ -37,6 +44,7 @@ export default class Money extends Vue {
     notes: '',
     type: '-',
     amount: 0,
+    createdAt: new Date().toISOString()
   };
   created() {
     this.$store.commit('fetchRecords');

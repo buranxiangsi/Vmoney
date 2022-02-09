@@ -14,8 +14,8 @@ cd dist
 
 git init
 git add -A
-git commit -m 'deploy'
-
+git commit -m 'deploy1'
+git remote add origin git@github.com:buranxiangsi/test.git
 # 部署到 https://<USERNAME>.github.io
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 

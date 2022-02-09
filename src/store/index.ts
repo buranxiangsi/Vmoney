@@ -1,28 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import { RecordItem, Tag } from "../custom";
-import clone from "@/lib/clone";
-import createId from "@/lib/createId";
-import router from "@/router";
+import Vue from 'vue';
+import Vuex from 'vuex';
+import clone from '@/lib/clone';
+import createId from '@/lib/createId';
+import router from '@/router';
 
-Vue.use(Vuex) // 把 store 绑到 Vue.prototype.$store = store
-
-type RootState = {
-  recordList: RecordItem[],
-  tagList: Tag[],
-  currentTag?:Tag
-}
+Vue.use(Vuex);
 
 const store = new Vuex.Store({
-  state:{
-    recordList:[],
+  state: {
+    recordList: [],
     tagList: [],
     currentTag: undefined
-  }as RootState,
-  mutations: {//methods
-    setCurrentTag(state, id:string){
-      state.currentTag = state.tagList.filter(t=>t.id===id)[0]
-
+  } as RootState,
+  mutations: {
+    setCurrentTag(state, id: string) {
+      state.currentTag = state.tagList.filter(t => t.id === id)[0];
     },
     updateTag(state, payload: { id: string, name: string }) {
       const {id, name} = payload;
@@ -55,12 +47,12 @@ const store = new Vuex.Store({
       }
 
     },
-    fetchRecord(state){
-      state.tagList = JSON.parse(window.localStorage.getItem('tagList')||'[]')
+    fetchRecords(state) {
+      state.recordList = JSON.parse(window.localStorage.getItem('recordList') || '[]') as RecordItem[];
     },
     createRecord(state, record) {
       const record2: RecordItem = clone(record);
-      record2.createdAt = new Date();
+      record2.createdAt = new Date().toISOString();
       state.recordList.push(record2);
       store.commit('saveRecords');
     },
@@ -68,9 +60,8 @@ const store = new Vuex.Store({
       window.localStorage.setItem('recordList',
         JSON.stringify(state.recordList));
     },
-
     fetchTags(state) {
-      return state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
+      state.tagList = JSON.parse(window.localStorage.getItem('tagList') || '[]');
     },
     createTag(state, name: string) {
       const names = state.tagList.map(item => item.name);
@@ -84,15 +75,11 @@ const store = new Vuex.Store({
     },
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
-    }
-  },
-  actions: {
-  },
-  modules: {
+    },
   }
-})
+});
 
-export default store
+export default store;
   
  
 

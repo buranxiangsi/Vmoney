@@ -71,9 +71,9 @@
       }
       result.map(group => {
         group.total = group.items.reduce((sum, item) => {
-          console.log(sum);
-          console.log(item);
-          return sum + item.amount;
+          console.log(sum)
+          console.log(typeof(item))
+          return  sum + item.amount;
         }, 0);
       });
       return result;

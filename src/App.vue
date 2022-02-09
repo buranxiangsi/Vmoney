@@ -15,14 +15,3 @@ body{
   background: #F5F5F5;
 }
 </style>
-
-<script>
-import store from './store/index2'
-export default {
-  data(){
-    return {
-      store: store
-    }
-  }
-}
-</script>

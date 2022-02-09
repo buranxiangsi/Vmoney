@@ -4,10 +4,14 @@
       <button @click="create">新增标签</button>
     </div>
     <ul class="current">
-      <li v-for="tag in tagList" :key="tag.id"
-        :class="{selected: selectedTags.indexOf(tag)>=0}"
+      <li
+        v-for="tag in tagList"
+        :key="tag.id"
+        :class="{ selected: selectedTags.indexOf(tag) >= 0 }"
         @click="toggle(tag)"
-      >{{tag.name}}</li>
+      >
+        {{ tag.name }}
+      </li>
     </ul>
   </div>
 </template>
@@ -15,12 +19,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import { Component, Prop } from 'vue-property-decorator';
-import store from "@/store/index2";
 
-@Component
+@Component({
+  computed:{
+    tagList(){
+      return this.$store.state.tagList
+    }
+  }
+})
 export default class Tags extends Vue {
-  tagList = store.fetchTags()
   selectedTags: string[] = [];
+  created() {
+    this.$store.commit('fetchTags')
+  }
   toggle(tag: string){
     const index = this.selectedTags.indexOf(tag)
     if(index >= 0){
@@ -33,7 +44,7 @@ export default class Tags extends Vue {
   create(){
     const name = window.prompt('请输入标签')
     if(!name){return window.alert('标签名不能为空')}
-    store.createTag(name)
+    this.$store.commit('createTag',name)
   }
 }
 </script>
@@ -59,7 +70,7 @@ export default class Tags extends Vue {
       margin-right: 12px;
       line-height: $h; //一行字才能用，垂直居中
       margin-top: 4px;
-      &.selected{
+      &.selected {
         background: darken($bg, 50%);
         color: white;
       }

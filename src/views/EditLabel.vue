@@ -23,7 +23,6 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import FromItem from '@/components/Money/FromItem.vue';
 import Button from '@/components/Button.vue';
-import { Tag } from '../custom';
 
 @Component({
   components: { Button, FromItem },

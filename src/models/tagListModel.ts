@@ -64,4 +64,4 @@ const tagListModel: TagListModel = {
   }
 }
 
-export {tagListModel}
+export default tagListModel

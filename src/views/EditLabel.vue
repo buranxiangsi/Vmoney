@@ -9,7 +9,7 @@
       <FromItem
         :value="tag.name"
         @update:value="updateTag"
-        fieldName="标签名"
+        field-name="标签名"
         placeholder="请输入标签名"
       />
     </div>
@@ -24,6 +24,7 @@ import { Component } from 'vue-property-decorator';
 import FromItem from '@/components/Money/FromItem.vue';
 import Button from '@/components/Button.vue';
 import { Tag } from "../custom";
+import store from '@/store/index2'
 
 @Component({
   components: { Button, FromItem },
@@ -32,19 +33,19 @@ export default class EditLabel extends Vue {
   tag ?: Tag = undefined
 
   created() {
-    this.tag = window.findTag(this.$router.params.id)
+    this.tag = store.findTag(this.$route.params.id)
     if (!this.tag) {
       this.$router.replace('/404');
     }
   }
   updateTag(name: string) {
     if (this.tag) {
-      window.updateTag(this.tag.id, name);
+      store.updateTag(this.tag.id, name);
     }
   }
   remove() {
     if (this.tag) {
-      if (window.removeTag(this.tag.id)) {
+      if (store.removeTag(this.tag.id)) {
         this.$router.back();
       } else {
         window.alert('删除失败');
@@ -65,7 +66,7 @@ export default class EditLabel extends Vue {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  > .thitle {
+  > .title {
     border: 1px solid red;
   }
   > .leftIcon {

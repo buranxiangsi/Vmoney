@@ -17,20 +17,18 @@ import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import FromItem from '@/components/Money/FromItem.vue';
 import Tags from '@/components/Money/Tags.vue';
-import { Component, Watch } from 'vue-property-decorator';
-import { recordListModel } from '@/models/recordListModel'
+import {Component} from 'vue-property-decorator'
+import store from '@/store/index2'
 import { RecordItem } from "../custom";
 
 
-const recordList = recordListModel.fetch()
-
 
 @Component({
-  components: { FromItem, Types, NumberPad, Tags },
+  components: { Tags, FromItem, Types, NumberPad },
 })
 export default class Money extends Vue {
-  tags = window.tagList
-  recordList: RecordItem[] = recordList;
+  tags = store.tagList
+  recordList = store.recordList
   record: RecordItem = {
     tags: [],
     notes: '',
@@ -45,12 +43,9 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
   saveRecord() {
-    recordListModel.create(this.record)
+    store.createRecord(this.record)
   }
-  @Watch('recordList')
-  onRecordListChange() {
-    recordListModel.save()
-  }
+  
 }
 </script>
 

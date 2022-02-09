@@ -3,9 +3,11 @@
     <NumberPad :value.sync="record.amount" @submit="saveRecord" />
     <Types :value.sync="record.type" />
     <div class="notes">
-      <FromItem field-name="备注" 
-           placeholder="在这里输入备注"
-            @update:value="onUpdateNotes" />
+      <FromItem
+        field-name="备注"
+        placeholder="在这里输入备注"
+        @update:value="onUpdateNotes"
+      />
     </div>
     <Tags :dataSource.sync="tags" @update:value="onUpdateTags" />
   </Layout>
@@ -17,18 +19,16 @@ import NumberPad from '@/components/Money/NumberPad.vue';
 import Types from '@/components/Money/Types.vue';
 import FromItem from '@/components/Money/FromItem.vue';
 import Tags from '@/components/Money/Tags.vue';
-import {Component} from 'vue-property-decorator'
-import store from '@/store/index2'
-import { RecordItem } from "../custom";
-
-
+import { Component } from 'vue-property-decorator';
+import store from '@/store/index2';
+import { RecordItem } from '../custom';
 
 @Component({
   components: { Tags, FromItem, Types, NumberPad },
 })
 export default class Money extends Vue {
-  tags = store.tagList
-  recordList = store.recordList
+  tags = store.tagList;
+  recordList = store.recordList;
   record: RecordItem = {
     tags: [],
     notes: '',
@@ -43,9 +43,8 @@ export default class Money extends Vue {
     this.record.notes = value;
   }
   saveRecord() {
-    store.createRecord(this.record)
+    store.createRecord(this.record);
   }
-  
 }
 </script>
 
@@ -54,8 +53,7 @@ export default class Money extends Vue {
   display: flex;
   flex-direction: column-reverse;
 }
-.notes{
-  padding:12px 0;
+.notes {
+  padding: 12px 0;
 }
 </style>
-

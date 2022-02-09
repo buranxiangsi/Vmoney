@@ -1,5 +1,5 @@
 import Component from "vue-class-component";
-import Vue from "vue/types/umd";
+import Vue from "vue";
 
 @Component
 export class TagHelper extends Vue{

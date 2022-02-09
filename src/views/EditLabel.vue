@@ -29,9 +29,10 @@ import { Tag } from "../custom";
   components: { Button, FromItem },
 })
 export default class EditLabel extends Vue {
-  tag = window.findTag(this.$route.params.id);
+  tag ?: Tag = undefined
 
   created() {
+    this.tag = window.findTag(this.$router.params.id)
     if (!this.tag) {
       this.$router.replace('/404');
     }

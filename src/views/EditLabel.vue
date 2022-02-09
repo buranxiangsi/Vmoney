@@ -7,8 +7,8 @@
     </div>
     <div class="from-wrapper">
       <FromItem
-        :value="tag.name"
-        @update:value="updateTag"
+        :value="currentTag.name"
+        @update:value="update"
         field-name="标签名"
         placeholder="请输入标签名"
       />
@@ -29,41 +29,30 @@ import { Tag } from '../custom';
   components: { Button, FromItem },
 })
 export default class EditLabel extends Vue {
-  get tag() {
+  get currentTag() {
     return this.$store.state.currentTag;
   }
 
   created() {
     const id = this.$route.params.id;
-    console.log(id);
     this.$store.commit('fetchTags');
     this.$store.commit('setCurrentTag', id);
-    if (!this.tag) {
-      console.log('no tag');
+    if (!this.currentTag) {
       this.$router.replace('/404');
-    }else{
-      console.log('has tag')
     }
   }
   update(name: string) {
-    if (this.tag) {
+    if (this.currentTag) {
       // TODO
       // this.tag =  // store.findTag(this.$route.params.id);
       this.$store.commit('updateTag', {
-          id: this.tag.id, name
+          id: this.currentTag.id, name
         });
     }
   }
   remove() {
-    //Todo
-    if (this.tag) {
-      return;
-      // if (store.removeTag(this.tag.id)) {
-      //   this.$router.back();
-      // } else {
-      //   window.alert('删除失败');
-      // }
-       this.$store.commit('removeTag', this.tag.id);
+    if (this.currentTag) {
+     this.$store.commit('removeTag', this.currentTag.id);
     }
   }
   goBack() {

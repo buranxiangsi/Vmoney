@@ -12,6 +12,17 @@ body{
   line-height: 1.5;
   font-family: $font-hei;
   font-size: 16px;
-  background: #f5f5f5;
+  background: #F5F5F5;
 }
 </style>
+
+<script>
+import store from './store/index2'
+export default {
+  data(){
+    return {
+      store: store
+    }
+  }
+}
+</script>

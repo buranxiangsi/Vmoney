@@ -2,7 +2,7 @@
   <Layout>
     <Tabs class-prefix="type" :data-source="recordTypeList" :value.sync="type"/>
     <div class="chart-wrapper" ref="chartWrapper">
-      <Chart class="chart" :options="x"/>
+      <Chart class="chart" :options="chartOptions"/>
     </div>
     <ol v-if="groupedList.length>0">
       <li v-for="(group, index) in groupedList" :key="index">
@@ -61,7 +61,7 @@
         return day.format('YYYY年M月D日');
       }
     }
-    get y() {
+    get keyValueList() {
       const today = new Date();
       const array = [];
       for (let i = 0; i <= 29; i++) {
@@ -72,13 +72,13 @@
           createdAt: dateString
         });
         array.push({
-          date: dateString, value: found ? found.amount : 0
+          key: dateString, value: found ? found.amount : 0
         });
       }
       array.sort((a, b) => {
-        if (a.date > b.date) {
+        if (a.key > b.key) {
           return 1;
-        } else if (a.date === b.date) {
+        } else if (a.key === b.key) {
           return 0;
         } else {
           return -1;
@@ -86,9 +86,9 @@
       });
       return array;
     }
-    get x() {
-      const keys = this.y.map(item => item.date);
-      const values = this.y.map(item => item.value);
+    get chartOptions() {
+      const keys = this.keyValueList.map(item => item.key);
+      const values = this.keyValueList.map(item => item.value);
       return {
         grid: {
           left: 0,
@@ -98,7 +98,12 @@
           type: 'category',
           data: keys,
           axisTick: {alignWithLabel: true},
-          axisLine: {lineStyle: {color: '#666'}}
+          axisLine: {lineStyle: {color: '#666'}},
+           axisLabel: {
+            formatter: function (value: string, index: number) {
+              return value.substr(5)
+            }
+          }
         },
         yAxis: {
           type: 'value',

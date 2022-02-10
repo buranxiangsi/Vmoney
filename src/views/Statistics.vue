@@ -169,9 +169,10 @@
   }
   ::v-deep {
     .type-tabs-item {
-      background: #C4C4C4;
+      background: #c4c4c4;
+      
       &.selected {
-        background: white;
+        background: #41627c;
         &::after {
           display: none;
         }

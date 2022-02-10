@@ -134,7 +134,7 @@ export default class NumberPad extends Vue {
       } */
     }
     > button:hover{
-      background: rgb(229, 245, 213);
+      background: wheat;
     }
   }
 }

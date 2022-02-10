@@ -35,10 +35,11 @@
 <style lang="scss" scoped>
   .tabs {
     /* background: #C4C4C4; */
-    background: rgb(229, 245, 213);
+    background: #c4c4c4;
     display: flex;
     text-align: center;
     font-size: 24px;
+    color: white;
    &-item {
       width: 50%;
       height: 64px;
@@ -46,6 +47,10 @@
       justify-content: center;
       align-items: center;
       position: relative;
+      &.selected{
+        background: #41627c;
+        color: wheat;
+      }
       &.selected::after {
         content: '';
         position: absolute;
@@ -53,7 +58,9 @@
         left: 0;
         width: 100%;
         height: 4px;
-        background: rgb(52, 5, 223)
+        background: wheat;
+        
+
       }
     }
   }

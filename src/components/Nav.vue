@@ -29,6 +29,7 @@ nav{
   display: flex;
   flex-direction: row;
   font-size: 12px;
+  background: #c4c4c4;
   > .item{
     padding: 2px 0;
     width: 33.3333%;
@@ -42,7 +43,8 @@ nav{
     }
   }
   >.item.selected{
-    color: $color-highlight;
+    background: #41627c;
+    color: wheat;
   }
 
 }

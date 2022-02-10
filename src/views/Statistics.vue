@@ -51,7 +51,6 @@
       if (day.isSame(now, 'day')) {
         return '今天';
       } else if (day.isSame(now.subtract(1, 'day'), 'day')) {
-        console.log('hi');
         return '昨天';
       } else if (day.isSame(now.subtract(2, 'day'), 'day')) {
         return '前天';
@@ -68,11 +67,11 @@
         // this.recordList = [{date:7.3, value:100}, {date:7.2, value:200}]
         const dateString = day(today)
           .subtract(i, 'day').format('YYYY-MM-DD');
-        const found = _.find(this.recordList, {
-          createdAt: dateString
+        const found = _.find(this.groupedList, {
+          title: dateString
         });
         array.push({
-          key: dateString, value: found ? found.amount : 0
+          key: dateString, value: found ? found.total : 0
         });
       }
       array.sort((a, b) => {
@@ -159,7 +158,7 @@
   }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
   .echarts {
     max-width: 100%;
     height: 400px;

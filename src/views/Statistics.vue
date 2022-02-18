@@ -4,7 +4,8 @@
     <div class="chart-wrapper" ref="chartWrapper">
       <Chart class="chart" :options="chartOptions"/>
     </div>
-    <ol v-if="groupedList.length>0">
+    <div class="groundList" v-if="groupedList.length>0">
+      <ol >
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
         <ol>
@@ -18,6 +19,8 @@
         </ol>
       </li>
     </ol>
+    </div>
+    
     <div v-else class="noResult">
       目前没有相关记录
     </div>
@@ -167,6 +170,14 @@
     padding: 16px;
     text-align: center;
   }
+  .groundList{
+    height: 430px;
+    overflow: scroll;
+  }
+  .groundList::-webkit-scrollbar{
+      width: 0px;
+      height: 0px;
+    }
   ::v-deep {
     .type-tabs-item {
       background: #c4c4c4;

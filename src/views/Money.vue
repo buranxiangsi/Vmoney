@@ -18,7 +18,7 @@
       />
     </div>
     <Tags @update:value="record.tags=$event" />
-     <Tabs :data-source="recordTypeList" :value.sync="record.type" />
+    <Tabs :data-source="recordTypeList" :value.sync="record.type" />
   </Layout>
 </template>
 

@@ -29,7 +29,7 @@ import FromItem from '@/components/Money/FromItem.vue';
 import Tags from '@/components/Money/Tags.vue';
 import { Component } from 'vue-property-decorator';
 import recordTypeList from '@/constants/recordTypeList';
-import Tabs from '../components/Tabs.vue';
+import Tabs from '@/components/Tabs.vue';
 
 @Component({
   components: { Tabs, Tags, FromItem, NumberPad },

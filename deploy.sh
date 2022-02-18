@@ -2,7 +2,7 @@
 
 # 当发生错误时中止脚本
 set -e
-
+rm -rf dist
 # 构建
 yarn build
 
@@ -20,7 +20,7 @@ git remote add origin git@github.com:buranxiangsi/test.git
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # 部署到 https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:buranxiangsi/test.git master:gh-pages
+git push -f git@github.com:buranxiangsi/test.git master:main
 
 cd -
 

@@ -3,7 +3,7 @@
   <Layout>
      <div class="myApp">
        <div class="account">
-         <FromItem
+         <FromItem class-prefix="wode"
            fieldName="账户"
            type="text"
            placeholder="在这里输入账户名"
@@ -11,7 +11,7 @@
          ></FromItem>
        </div>
        <div class="password">
-         <FromItem
+         <FromItem class-prefix="wode"
            fieldName="密码"
            type="password"
            placeholder="在这里输入密码"
@@ -43,34 +43,26 @@ export default class Wode extends Vue{
 <style lang="scss" scoped>
 .myApp{
     height: 400px;
-    max-width: 90%;
     margin-top: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    .account{
-      margin-bottom: 40px;
-      border-bottom: 1px solid  rgb(45, 169, 226) ;
+    
+    ::v-deep .wode-formItem{
+      margin-bottom: 30px;
+      font-size: 16px;
+     box-shadow: 0px 0px 0.5px 1px  rgb(45, 169, 226);
+    border-radius: 25px;
+
+    }
      
-      
-    }
-     .formItem{
-        font-size: 2rem;
-        background: #2da9e2;
-      }
-    .password{
-      margin-bottom: 40px;
-      border-bottom: 1px solid  rgb(45, 169, 226) ;
-    }
     .my-button{
       .button{
       padding: 0 35px;
       background: #2da9e2;
       margin: 8px 18px;
+      border-radius: 25px;
     }
     }
    

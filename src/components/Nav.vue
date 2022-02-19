@@ -33,7 +33,7 @@ nav{
   display: flex;
   flex-direction: row;
   font-size: 12px;
-  background: #c4c4c4;
+  background: #fff;
   > .item{
     padding: 2px 0;
     width: 33.3333%;
@@ -47,8 +47,8 @@ nav{
     }
   }
   >.item.selected{
-    background: #41627c;
-    color: wheat;
+    background: wheat;
+    color: #41627c;
   }
 
 }

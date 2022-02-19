@@ -1,6 +1,6 @@
 <template>
       <div>
-      <label class="fromItem">
+      <label class="fromItem" :class="classPrefix && `${classPrefix}-formItem`  ">
         <span>{{this.fieldName}}</span>
         <template v-if="type==='date'">
           <input :type="type||'text'" 
@@ -30,6 +30,7 @@ export default class FromItem extends Vue{
   @Prop({required:true}) fieldName!:string;
   @Prop() placeholder?: string;
   @Prop() type?:string;
+  @Prop() classPrefix?:string;
   onValueChanged(value:string){
     this.$emit('update:value', value)
   }

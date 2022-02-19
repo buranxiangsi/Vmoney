@@ -12,7 +12,8 @@ const store = new Vuex.Store({
     createRecordError: null,
     createTagError: null,
     tagList: [],
-    currentTag: undefined
+    currentTag: undefined,
+    userList:[],
   } as RootState,
   mutations: {
     setCurrentTag(state, id: string) {
@@ -86,6 +87,19 @@ const store = new Vuex.Store({
     saveTags(state) {
       window.localStorage.setItem('tagList', JSON.stringify(state.tagList));
     },
+    fetchUsers(state) {
+      state.userList = JSON.parse(window.localStorage.getItem('userList') || '[]') as User[];
+    },
+    createUser(state, user:User){
+      const user2 = clone(user)
+      state.userList.push(user2)
+      store.commit('saveUsers')
+    },
+    saveUsers(state){
+      window.localStorage.setItem('userList',
+      JSON.stringify(state.userList));
+    }
+    
   }
 });
 

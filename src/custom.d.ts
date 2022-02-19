@@ -4,7 +4,8 @@ type RootState = {
   createRecordError: Error | null,
   createTagError: Error | null,
   tagList: Tag[],
-  currentTag?: Tag
+  currentTag?: Tag,
+  userList:User[],
 }
 type RecordItem = {
   tags: Tag[];
@@ -17,6 +18,10 @@ type Tag = {
   id: string;
   name: string;
 };
+type User = {
+  name: string;
+  password: number|null;
+}
 type TagListModel = {
   data: Tag[];
   fetch: () => Tag[];

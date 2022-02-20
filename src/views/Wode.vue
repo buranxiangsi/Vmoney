@@ -22,8 +22,8 @@
         ></FromItem>
       </div>
       <div class="my-button">
-        <Button @click="login">登录</Button>
-        <Button @click="login">注册</Button>
+        <router-link :to="`/wode/user/${user.name}`"><Button @click="login" >登录</Button></router-link>
+        <router-link :to="`/wode/user/${user.name}`"><Button @click="register">注册</Button></router-link>
       </div>
     </div>
   </Layout>
@@ -53,14 +53,25 @@ export default class Wode extends Vue {
       return window.alert('请输入账户');
     }
     if (this.user.password && this.user.password.length >= 6) {
+      
+    }else{
+      window.alert('密码必须大于6小于12位');
+    }
+  }
+  register() {
+    if (!this.user.name) {
+      return window.alert('请输入账户');
+    }
+    if (this.user.password && this.user.password.length >= 6) {
       this.$store.commit('createUser', this.user);
-      this.$router
+      this.$router;
     } else {
       window.alert('密码必须大于6小于12位');
     }
     if (this.$store.state.createRecordError === null) {
       this.user.name = '';
       this.user.password = '';
+      
     }
   }
 }
@@ -92,4 +103,3 @@ export default class Wode extends Vue {
   }
 }
 </style>
-

@@ -6,6 +6,7 @@ type RootState = {
   tagList: Tag[],
   currentTag?: Tag,
   userList:User[],
+  currentUser?:User
 }
 type RecordItem = {
   tags: Tag[];

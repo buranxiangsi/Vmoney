@@ -14,10 +14,14 @@ const store = new Vuex.Store({
     tagList: [],
     currentTag: undefined,
     userList:[],
+    currentUser:undefined,
   } as RootState,
   mutations: {
     setCurrentTag(state, id: string) {
       state.currentTag = state.tagList.filter(t => t.id === id)[0];
+    },
+    setCurrentUser(state,name:string){
+     state.currentUser = state.userList.filter(item=>item.name = name)[0]
     },
     updateTag(state, payload: { id: string, name: string }) {
       const {id, name} = payload;

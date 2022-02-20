@@ -91,8 +91,13 @@ const store = new Vuex.Store({
       state.userList = JSON.parse(window.localStorage.getItem('userList') || '[]') as User[];
     },
     createUser(state, user:User){
-      const user2 = clone(user)
-      state.userList.push(user2)
+      state.createTagError = null
+      const names = state.userList.map(item=>item.name)
+      if(names.indexOf(user.name)>=0){
+        state.createTagError = new Error('name duplicated')
+        return window.alert('账户重复')
+      }
+      state.userList.push(user)
       store.commit('saveUsers')
     },
     saveUsers(state){

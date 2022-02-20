@@ -20,7 +20,7 @@ type Tag = {
 };
 type User = {
   name: string;
-  password: number|null;
+  password: string;
 }
 type TagListModel = {
   data: Tag[];

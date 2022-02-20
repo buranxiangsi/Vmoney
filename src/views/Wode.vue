@@ -17,11 +17,13 @@
           type="password"
           placeholder="在这里输入密码"
           :value.sync="user.password"
+          :maxlength="12"
+          :minlength="6"
         ></FromItem>
       </div>
       <div class="my-button">
         <Button @click="login">登录</Button>
-        <Button>注册</Button>
+        <Button @click="login">注册</Button>
       </div>
     </div>
   </Layout>
@@ -41,27 +43,26 @@ export default class Wode extends Vue {
   }
   user: User = {
     name: '',
-    password: null,
+    password: '',
   };
   created() {
     this.$store.commit('fetchUsers');
   }
   login() {
     if (!this.user.name) {
-        return window.alert('请输入账户');
-      }
-    if(!this.user.password){
-      return window.alert('请输入密码')
+      return window.alert('请输入账户');
     }
-    console.log(this.user)
-    this.$store.commit('createUser', this.user);
+    if (this.user.password && this.user.password.length >= 6) {
+      this.$store.commit('createUser', this.user);
+      this.$router
+    } else {
+      window.alert('密码必须大于6小于12位');
+    }
     if (this.$store.state.createRecordError === null) {
-      window.alert('已保存');
       this.user.name = '';
-      this.user.password = null;
+      this.user.password = '';
     }
   }
-
 }
 </script>
 
@@ -83,11 +84,12 @@ export default class Wode extends Vue {
 
   .my-button {
     .button {
-      padding: 0 35px;
-      background: #2da9e2;
+      padding: 0 39px;
+      background: rgb(45, 169, 226);
       margin: 8px 18px;
       border-radius: 25px;
     }
   }
 }
 </style>
+

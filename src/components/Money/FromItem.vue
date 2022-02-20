@@ -6,13 +6,18 @@
           <input :type="type||'text'" 
             :value="x(value)"
             @input="onValueChanged($event.target.value)"
-            :placeholder="placeholder" />
+            :placeholder="placeholder"
+            :maxlength="maxlength"
+             />
         </template>
         <template v-else>
            <input :type="type||'text'" 
             :value="value"
             @input="onValueChanged($event.target.value)"
-            :placeholder="placeholder" />
+            :placeholder="placeholder"
+            :maxlength="maxlength"
+            :minlength="minlength"
+             />
         </template>
        
       </label>
@@ -31,6 +36,8 @@ export default class FromItem extends Vue{
   @Prop() placeholder?: string;
   @Prop() type?:string;
   @Prop() classPrefix?:string;
+  @Prop() maxlength?:number;
+  @Prop() minlength?:number;
   onValueChanged(value:string){
     this.$emit('update:value', value)
   }

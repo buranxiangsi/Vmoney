@@ -4,8 +4,8 @@
     <div class="chart-wrapper" ref="chartWrapper">
       <Chart class="chart" :options="chartOptions"/>
     </div>
-    <div class="groundList" v-if="groupedList.length>0">
-      <ol >
+    <div class="groundList-wrapper" v-if="groupedList.length>0">
+      <ol class="ground">
       <li v-for="(group, index) in groupedList" :key="index">
         <h3 class="title">{{beautify(group.title)}} <span>￥{{group.total}}</span></h3>
         <ol>
@@ -171,12 +171,20 @@
     text-align: center;
   }
   .groundList{
-    height: 430px;
-    overflow: scroll;
+    &-wrapper{
+      overflow: hidden;
+      overflow-y: scroll;
+      &::-webkit-scrollbar{
+        display: none;
+      }
+    }
+   
+  
   }
-  .groundList::-webkit-scrollbar{
-      width: 0px;
-      height: 0px;
+   ::v-deep{
+      .ground{
+        height: calc(100vh - 414px);
+      }
     }
   ::v-deep {
     .type-tabs-item {

@@ -29,14 +29,6 @@ const routes: Array<RouteConfig> = [
     component: Statistics
   },
   {
-    path: '/wode',
-    component: Wode
-  },
-  {
-    path: '/wode/user/:name',
-    component: UserName
-  },
-  {
     path: '*',
     component: NoFound
   },

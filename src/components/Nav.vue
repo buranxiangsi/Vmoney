@@ -12,10 +12,6 @@
       <Icon name="statistics"/>
       统计
     </router-link>
-    <router-link to="/wode" class="item" active-class="selected">
-      <Icon name="wode"/>
-      我的
-    </router-link>
   </nav>
 </template>
 
